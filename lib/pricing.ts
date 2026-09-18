@@ -1,0 +1,3 @@
+import { AddOn, Material, ModelSize } from '@/types/product';
+export const pricing = { base: 999, size: { Small: 0, Medium: 200, Large: 500 } satisfies Record<ModelSize, number>, material: { PLA: 0, Resin: 300, 'Premium Resin': 600 } satisfies Record<Material, number>, addOn: { 'Premium Base': 250, 'Name Plate': 100, 'Custom Text': 100, 'Gift Packaging': 150 } satisfies Record<AddOn, number> };
+export function calculateCustomModelPrice(size: ModelSize, material: Material, addOns: AddOn[]) { return pricing.base + pricing.size[size] + pricing.material[material] + addOns.reduce((total, item) => total + pricing.addOn[item], 0); }
